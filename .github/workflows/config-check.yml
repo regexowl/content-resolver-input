@@ -1,0 +1,41 @@
+name: Check of config files
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  setup_and_test:
+    runs-on: ubuntu-latest
+    container: 
+      image: registry.fedoraproject.org/fedora:35
+    steps:
+    
+    - name: Checkout code repo
+      uses: actions/checkout@v2
+      with: 
+        repository: regexowl/content-resolver
+    
+    - name: Checkout input repo
+      uses: actions/checkout@v2
+      with:
+        repository: regexowl/content-resolver-input
+        path: content-resolver-input
+
+    - name: Update GPG keys
+      run: dnf -y update fedora-gpg-keys
+        
+    - name: Install git and Python libraries
+      run: dnf -y install git-core python3-yaml python3-jinja2 python3-pytest python3-flake8
+    
+    - name: Clean up
+      run: dnf clean all
+      
+    - name: Print directory
+      run: pwd
+    
+    - name: Run tests
+      run: |
+        pytest
