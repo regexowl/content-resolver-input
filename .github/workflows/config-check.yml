@@ -33,8 +33,8 @@ jobs:
       run: dnf clean all
       
     - name: Print directory
-      run: pwd
+      run: ls && cd .. && ls
     
-    - name: Run tests
-      run: |
-        pytest
+    #- name: Run tests
+     # run: |
+      #  pytest
