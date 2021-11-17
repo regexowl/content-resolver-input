@@ -22,7 +22,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: regexowl/content-resolver-input
-        path: content-resolver-input
 
     - name: Update GPG keys
       run: dnf -y update fedora-gpg-keys
