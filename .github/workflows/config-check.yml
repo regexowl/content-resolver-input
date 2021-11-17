@@ -34,7 +34,7 @@ jobs:
       run: dnf clean all
       
     - name: Print directory
-      run: pwd && ls && cd content-resolver && pwd && ls
+      run: pwd && ls && cd code && pwd && ls
     
     #- name: Run tests
      # run: |
