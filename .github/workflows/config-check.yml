@@ -13,16 +13,16 @@ jobs:
       image: registry.fedoraproject.org/fedora:35
     steps:
     
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        path: main
-
     - name: Checkout code repo
       uses: actions/checkout@v2
       with:
         repository: regexowl/content-resolver
         path: code
+    
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        path: code/input
 
     - name: Update GPG keys
       run: dnf -y update fedora-gpg-keys
@@ -34,7 +34,7 @@ jobs:
       run: dnf clean all
       
     - name: Print directory
-      run: pwd && ls && cd code && pwd && ls
+      run: pwd && echo "xxxxx" && ls && echo "xxxxx" && cd .. && echo "xxxxx" && pwd && ls
     
     #- name: Run tests
      # run: |
