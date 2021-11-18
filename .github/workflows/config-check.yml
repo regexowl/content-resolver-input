@@ -23,6 +23,8 @@ jobs:
       uses: actions/checkout@v2
       with:
         path: code/input
+      
+    - name: List changed files
       run: echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV
 
     - name: Update GPG keys
