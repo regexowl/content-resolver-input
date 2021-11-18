@@ -1,5 +1,5 @@
 ---
-document: feedback-pipeline-compose-view
+document: random-test
 version: 1
 data:
   name: Automotive Minimal Package View using CentOS Stream 8
