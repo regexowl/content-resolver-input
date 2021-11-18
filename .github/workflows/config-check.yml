@@ -34,8 +34,8 @@ jobs:
       run: dnf clean all
       
     - name: Print directory
-      run: pwd && echo "xxxxx" && ls && echo "xxxxx" && cd .. && echo "xxxxx" && pwd && ls
+      run: pwd
     
-    #- name: Run tests
-     # run: |
-      #  pytest
+    - name: Run tests
+      run: |
+        pytest
