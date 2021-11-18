@@ -24,14 +24,14 @@ jobs:
       with:
         path: code/input
       
-    - name: List changed files
-      run: echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV
-
     - name: Update GPG keys
       run: dnf -y update fedora-gpg-keys
         
     - name: Install git and Python libraries
       run: dnf -y install git-core python3-yaml python3-jinja2 python3-pytest python3-flake8
+
+    - name: List changed files
+      run: echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV
     
     - name: Clean up
       run: dnf clean all
