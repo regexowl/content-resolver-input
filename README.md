@@ -13,3 +13,4 @@ Option 1: Look at the [Configuration](https://tiny.distro.builders/configs_workl
 Option 2: Almost every page under [Results](https://tiny.distro.builders/workloads.html) has a link to its configuration file. The link is usually located at right side of each page.
 
 In both cases, you can edit the config and send a PR right from your web browser.
+
