@@ -25,7 +25,16 @@ jobs:
         path: code/input
         
     - name: Test 1
-      run: echo "::notice::hello world"
+      uses: actions/github-script@v5
+      with: 
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: 'Hello World!'
+          })
       
     - name: Update GPG keys
       run: dnf -y update fedora-gpg-keys
