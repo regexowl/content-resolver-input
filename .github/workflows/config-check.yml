@@ -35,7 +35,7 @@ jobs:
       
     - name: Run conf
       run: |
-        python -c 'import feedback_pipeline; print(feedback_pipeline.get_configs())'
+        python3 -c 'import feedback_pipeline; print(feedback_pipeline.get_configs())'
         
     - name: Run get_configs and set output
       run: |
