@@ -36,10 +36,11 @@ jobs:
     - name: Run get_configs and set output
       run: |
         cd code
-        RESULTS=$(python3 test_config_files.py)
-        echo "RESULTS<<EOF" >> $GITHUB_ENV
-        echo "$RESULTS" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
+        RESULTS=$(python3 test_config_files.py 2>&1)
+        RESULTS="${RESULTS//'%'/'%25'}"
+        RESULTS="${RESULTS//$'\n'/'%0A'}"
+        RESULTS="${RESULTS//$'\r'/'%0D'}"
+        echo "::set-output name=PR_COMMENT::$RESULTS"
       id: get_configs_output
 
     - name: Comment on the PR
@@ -51,5 +52,5 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: "${{ env.PR_COMMENT }}"
+            body: "${{ steps.get_configs_output.outputs.PR_COMMENT }}"
           })
