@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: registry.fedoraproject.org/fedora:35
+    outputs:
+      output: ${{ steps.get_config_output.outputs.message }}
     steps:
     
     - name: Checkout code repo
