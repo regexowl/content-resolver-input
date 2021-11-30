@@ -39,9 +39,10 @@ jobs:
         #python -c 'import feedback_pipeline; print feedback_pipeline.get_configs()'
         
     - name: Set output
-      id: get_configs_output
       run: |
         echo "::set-output name=PR_COMMENT::"Hello World!""
+      id: get_configs_output
+
 
     - name: Comment on the PR
       uses: actions/github-script@v5
