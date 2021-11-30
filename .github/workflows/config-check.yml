@@ -40,7 +40,7 @@ jobs:
         RESULTS="${RESULTS//'%'/'%25'}"
         RESULTS="${RESULTS//$'\n'/'%0A'}"
         RESULTS="${RESULTS//$'\r'/'%0D'}"
-        echo "::set-output name=PR_COMMENT::$(echo "$RESULTS")"
+        echo "::set-output name=PR_COMMENT::$RESULTS"
       id: get_configs_output
 
     - name: Comment on the PR
