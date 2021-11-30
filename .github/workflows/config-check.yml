@@ -40,7 +40,7 @@ jobs:
         
     - name: Set output
       run: |
-        echo "::set-output name=PR_COMMENT::Hello"
+        echo "::set-output name=PR_COMMENT::'Hello'"
       id: get_configs_output
 
 
