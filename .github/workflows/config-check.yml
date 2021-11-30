@@ -32,17 +32,11 @@ jobs:
 
     - name: Clean up
       run: dnf clean all
-    
-    - name: Run get_configs
-      run: | #TODO exchange for feedback_pipeline.get_configs(create_mock_settings())
-        pytest -s
-        #python -c 'import feedback_pipeline; print feedback_pipeline.get_configs()'
         
-    - name: Set output
+    - name: Run get_configs and set output
       run: |
-        echo "::set-output name=PR_COMMENT::'Hello'"
+        echo "::set-output name=PR_COMMENT::$(python -c 'import feedback_pipeline; print(feedback_pipeline.get_configs())')"
       id: get_configs_output
-
 
     - name: Comment on the PR
       uses: actions/github-script@v5
