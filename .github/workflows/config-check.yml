@@ -38,7 +38,8 @@ jobs:
     - name: Run get_configs
       id: get_configs
       run: | #TODO exchange for feedback_pipeline.get_configs(create_mock_settings())
-        pytest -s
+        #pytest -s
+        python -c 'import feedback_pipeline; print feedback_pipeline.get_configs()'
         
     - name: Set output
       id: get_configs_output
