@@ -37,7 +37,7 @@ jobs:
       run: |
         cd code
         #$(python3 test_config_files.py)
-        RESULTS="Hello" 
+        RESULTS=""Hello"" 
         RESULTS="${RESULTS//'%'/'%25'}"
         RESULTS="${RESULTS//$'\n'/'%0A'}"
         RESULTS="${RESULTS//$'\r'/'%0D'}"
