@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: registry.fedoraproject.org/fedora:35
-    outputs:
-      output: ${{ steps.get_config_output.outputs.message }}
     steps:
     
     - name: Checkout code repo
@@ -36,16 +34,14 @@ jobs:
       run: dnf clean all
     
     - name: Run get_configs
-      id: get_configs
       run: | #TODO exchange for feedback_pipeline.get_configs(create_mock_settings())
-        #pytest -s
-        python -c 'import feedback_pipeline; print feedback_pipeline.get_configs()'
+        pytest -s
+        #python -c 'import feedback_pipeline; print feedback_pipeline.get_configs()'
         
     - name: Set output
       id: get_configs_output
       run: |
-        GET_CONFIGS_OUTPUT="Hello World!"
-        echo "::set-output name=message::$GET_CONFIGS_OUTPUT"
+        echo "::set-output name=PR_COMMENT::"Hello World!""
 
     - name: Comment on the PR
       uses: actions/github-script@v5
@@ -56,5 +52,5 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: ${{ steps.get_configs_output.outputs.message }}
+            body: ${{ steps.get_configs_output.outputs.PR_COMMENT }}
           })
