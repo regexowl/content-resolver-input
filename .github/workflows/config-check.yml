@@ -36,7 +36,7 @@ jobs:
     - name: Run get_configs and set output
       run: |
         cd code
-        RESULTS="$(python3 test_config_files.py)"
+        RESULTS="test:$(python3 test_config_files.py)"
         RESULTS="${RESULTS//'%'/'%25'}"
         RESULTS="${RESULTS//$'\n'/'%0A'}"
         RESULTS="${RESULTS//$'\r'/'%0D'}"
