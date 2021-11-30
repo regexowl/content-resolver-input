@@ -23,18 +23,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         path: code/input
-        
-    - name: Test 1
-      uses: actions/github-script@v5
-      with: 
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: 'Hello World!'
-          })
       
     - name: Update GPG keys
       run: dnf -y update fedora-gpg-keys
@@ -48,3 +36,15 @@ jobs:
     - name: Run tests
       run: |
         pytest -s
+
+    - name: Test 1
+      uses: actions/github-script@v5
+      with: 
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: 'Hello World!'
+          })
