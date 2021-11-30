@@ -34,7 +34,7 @@ jobs:
       run: dnf clean all
       
     - name: Where are we
-      run: pwd
+      run: pwd | cd code | pwd
       
     - name: Run conf
       run: |
