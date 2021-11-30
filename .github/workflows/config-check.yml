@@ -33,11 +33,9 @@ jobs:
     - name: Clean up
       run: dnf clean all
       
-    - name: Where are we
-      run: pwd | cd code | pwd
-      
     - name: Run conf
       run: |
+        cd code 
         python3 -c 'import feedback_pipeline; print(feedback_pipeline.get_configs())'
         
     - name: Run get_configs and set output
