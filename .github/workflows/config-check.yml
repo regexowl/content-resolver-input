@@ -54,5 +54,7 @@ jobs:
             repo: context.repo.repo,
             body: `
               Hello
-              World!`   #"${{ steps.get_configs_output.outputs.PR_COMMENT }}"
+              World!`   
           })
+
+#"${{ steps.get_configs_output.outputs.PR_COMMENT }}"
