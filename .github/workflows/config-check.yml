@@ -36,7 +36,7 @@ jobs:
     - name: Run get_configs and set output
       run: |
         cd code
-        echo "::set-output name=PR_COMMENT::$(python3 -c 'import feedback_pipeline; mock_settings = {\"configs\": \"input/configs\", \"allowed_arches\": [\"armv7hl\",\"aarch64\",\"ppc64le\",\"s390x\",\"x86_64\"]}; feedback_pipeline.get_configs(mock_settings)')"
+        echo "::set-output name=PR_COMMENT::$(pytest)"
       id: get_configs_output
 
     - name: Comment on the PR
