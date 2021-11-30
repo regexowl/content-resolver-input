@@ -36,11 +36,7 @@ jobs:
     - name: Run get_configs and set output
       run: |
         cd code
-        RESULTS="Hello" #$(python3 test_config_files.py)
-        RESULTS="${RESULTS//'%'/'%25'}"
-        RESULTS="${RESULTS//$'\n'/'%0A'}"
-        RESULTS="${RESULTS//$'\r'/'%0D'}"
-        echo "::set-output name=PR_COMMENT::$(echo "$RESULTS")"
+        echo "::set-output name=PR_COMMENT::$(echo "$(python3 test_config_files.py)")"
       id: get_configs_output
 
     - name: Comment on the PR
