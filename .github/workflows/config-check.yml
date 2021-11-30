@@ -32,10 +32,14 @@ jobs:
 
     - name: Clean up
       run: dnf clean all
+      
+    - name: Run conf
+      run: |
+        python -c 'import feedback_pipeline; print(feedback_pipeline.get_configs())'
         
     - name: Run get_configs and set output
       run: |
-        echo "::set-output name=PR_COMMENT::$(python -c 'import feedback_pipeline; print(feedback_pipeline.get_configs())')"
+        echo "::set-output name=PR_COMMENT::'Hello'"
       id: get_configs_output
 
     - name: Comment on the PR
