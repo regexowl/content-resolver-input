@@ -36,7 +36,7 @@ jobs:
     - name: Run conf
       run: |
         cd code 
-        python3 -c 'import feedback_pipeline; print(feedback_pipeline.get_configs(feedback_pipeline.load_settings()))'
+        python3 -c 'import feedback_pipeline; mock_settings = {"configs": "code/input/configs", "allowed_arches": ["armv7hl","aarch64","ppc64le","s390x","x86_64"]}; print(feedback_pipeline.get_configs(mock_settings))'
         
     - name: Run get_configs and set output
       run: |
