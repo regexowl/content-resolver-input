@@ -36,8 +36,7 @@ jobs:
     - name: Run get_configs and set output
       run: |
         cd code
-        #$(python3 test_config_files.py)
-        RESULTS=""Hello"" 
+        RESULTS=$(python3 test_config_files.py)
         RESULTS="${RESULTS//'%'/'%25'}"
         RESULTS="${RESULTS//$'\n'/'%0A'}"
         RESULTS="${RESULTS//$'\r'/'%0D'}"
@@ -53,5 +52,5 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: ${{ steps.get_configs_output.outputs.PR_COMMENT }}
+            body: "${{ steps.get_configs_output.outputs.PR_COMMENT }}"
           })
