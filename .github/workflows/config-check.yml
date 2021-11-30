@@ -36,7 +36,7 @@ jobs:
     - name: Run get_configs and set output
       run: |
         cd code
-        echo "::set-output name=PR_COMMENT::$(pytest)"
+        echo "::set-output name=PR_COMMENT::$(pytest -k 'test_get_config')"
       id: get_configs_output
 
     - name: Comment on the PR
