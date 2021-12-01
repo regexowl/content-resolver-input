@@ -16,23 +16,18 @@ jobs:
     - name: Checkout code repo
       uses: actions/checkout@v2
       with:
-        repository: regexowl/content-resolver
+        repository: minimization/content-resolver
         path: code
     
     - name: Checkout
       uses: actions/checkout@v2
       with:
         path: code/input
-      
-    - name: Update GPG keys
-      run: dnf -y update fedora-gpg-keys
         
     - name: Install git and Python libraries
       run: dnf -y install git-core python3-yaml python3-jinja2 python3-pytest python3-flake8
 
-    - name: Clean up
-      run: dnf clean all
-        
+    # GitHub Actions is unable to process multiline comments, this sanitization helps with the problem as described here: https://trstringer.com/github-actions-multiline-strings/    
     - name: Run get_configs and set output
       run: |
         cd code
@@ -42,7 +37,8 @@ jobs:
         RESULTS="${RESULTS//$'\r'/'%0D'}"
         echo "::set-output name=PR_COMMENT::$RESULTS"
       id: get_configs_output
-
+    
+    # The output is inserted as a multiline code block into the body of pull request comment 
     - name: Comment on the PR
       uses: actions/github-script@v5
       with: 
